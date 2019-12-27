@@ -1,0 +1,20 @@
+{
+  "name": "git-status",
+  "version": "0.0.1",
+  "description": "A desktop tool for checking your git repos at a glance",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "jest"
+  },
+  "keywords": [
+    "git",
+    "glance",
+    "status"
+  ],
+  "author": "Patrick Brophy",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^7.1.7"
+  }
+}
