@@ -19,15 +19,15 @@ const template = [
             { role: "hideothers" },
             { role: "unhide" },
             { type: "separator" },
-            { role: "quit" }
-          ]
-        }
+            { role: "quit" },
+          ],
+        },
       ]
     : []),
   // { role: 'fileMenu' }
   {
     label: "File",
-    submenu: [isMac ? { role: "close" } : { role: "quit" }]
+    submenu: [isMac ? { role: "close" } : { role: "quit" }],
   },
   // { role: 'editMenu' }
   {
@@ -47,11 +47,11 @@ const template = [
             { type: "separator" },
             {
               label: "Speech",
-              submenu: [{ role: "startspeaking" }, { role: "stopspeaking" }]
-            }
+              submenu: [{ role: "startspeaking" }, { role: "stopspeaking" }],
+            },
           ]
-        : [{ role: "delete" }, { type: "separator" }, { role: "selectAll" }])
-    ]
+        : [{ role: "delete" }, { type: "separator" }, { role: "selectAll" }]),
+    ],
   },
   // { role: 'viewMenu' }
   {
@@ -65,8 +65,8 @@ const template = [
       { role: "zoomin" },
       { role: "zoomout" },
       { type: "separator" },
-      { role: "togglefullscreen" }
-    ]
+      { role: "togglefullscreen" },
+    ],
   },
   // { role: 'windowMenu' }
   {
@@ -79,10 +79,10 @@ const template = [
             { type: "separator" },
             { role: "front" },
             { type: "separator" },
-            { role: "window" }
+            { role: "window" },
           ]
-        : [{ role: "close" }])
-    ]
+        : [{ role: "close" }]),
+    ],
   },
   {
     role: "help",
@@ -92,10 +92,10 @@ const template = [
         click: async () => {
           const { shell } = require("electron");
           await shell.openExternal("https://electronjs.org");
-        }
-      }
-    ]
-  }
+        },
+      },
+    ],
+  },
 ];
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -108,18 +108,18 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js")
-    }
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
   // and load the index.html of the app.
   mainWindow.loadFile("index.html");
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
-  mainWindow.on("closed", function() {
+  mainWindow.on("closed", function () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
@@ -129,10 +129,7 @@ function createWindow() {
   let tray = null;
   tray = new Tray("./git-status.png");
   const contextMenu = Menu.buildFromTemplate([
-    { label: "Item1", type: "radio" },
-    { label: "Item2", type: "radio" },
-    { label: "Item3", type: "radio", checked: true },
-    { label: "Item4", type: "radio" }
+    { label: "Settings", type: "file" },
   ]);
   tray.setToolTip("This is my application.");
   tray.setContextMenu(contextMenu);
@@ -147,13 +144,13 @@ function createWindow() {
 app.on("ready", createWindow);
 
 // Quit when all windows are closed.
-app.on("window-all-closed", function() {
+app.on("window-all-closed", function () {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== "darwin") app.quit();
 });
 
-app.on("activate", function() {
+app.on("activate", function () {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) createWindow();
