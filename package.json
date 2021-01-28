@@ -15,7 +15,7 @@
   "author": "Patrick Brophy",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^10.1.2"
+    "electron": "^10.2.0"
   },
   "dependencies": {
     "changed-git-files": "0.0.1"
