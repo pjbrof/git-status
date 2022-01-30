@@ -15,10 +15,19 @@
   </head>
   <body>
     <h1>Git Status</h1>
-    Node.js <span id="node-version"></span> <br />Chromium
-    <span id="chrome-version"></span>
-    <br />
-    Electron <span id="electron-version"></span>
+    <h2>Settings</h2>
+    <p>Please select your top level folder you want git status to monitor.</p>
+    <input id="topLevelFolder" type="file" webkitdirectory multiple />
+    <p>Top Level Directory: <span id="listing"></span></p>
+    <label for="nesting">
+      Enable nesting?
+      <input id="nesting" type="checkbox" />
+    </label>
+    <p>
+      (Warning: this could effect performance given the size of your top level
+      folder.)
+    </p>
+    <button type="submit">Save</button>
 
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
